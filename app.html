@@ -57,7 +57,7 @@
 
       /* Gradient background */
       .gradient-bg {
-        background: linear-gradient(135deg, #f9fbf9 0%, #f0f5f0 100%);
+        background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
       }
 
       /* Mobile optimizations */
@@ -82,10 +82,10 @@
   <body class="gradient-bg">
     <div class="relative flex size-full min-h-screen flex-col overflow-x-hidden font-['Manrope']">
       <div class="layout-container flex h-full grow flex-col">
-        <header class="sticky top-0 z-20 backdrop-blur-md bg-white/80 border-b border-solid border-b-[#ebf2e9] px-4 sm:px-6 lg:px-10 py-4 shadow-sm">
+        <header class="sticky top-0 z-20 backdrop-blur-md bg-white/80 border-b border-solid border-b-[#F5F5F5] px-4 sm:px-6 lg:px-10 py-4 shadow-sm">
           <div class="max-w-5xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-3 sm:gap-4 text-[#121a0f]">
-              <div class="size-5 sm:size-6 text-[#53d22c]">
+              <div class="size-5 sm:size-6 text-[#4CAF50]">
                 <svg viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
                 </svg>
@@ -96,15 +96,15 @@
         </header>
 
         <!-- Budget Status Bar - Always visible on mobile -->
-        <div class="sticky top-[72px] z-10 bg-white border-b border-[#ebf2e9] shadow-sm md:relative md:top-0 md:border-none md:shadow-none">
+        <div class="sticky top-[72px] z-10 bg-white border-b border-[#F5F5F5] shadow-sm md:relative md:top-0 md:border-none md:shadow-none">
           <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:flex md:flex-wrap items-center gap-3 py-3">
               <div class="text-center md:text-left md:flex-1">
-                <p class="text-sm font-medium text-[#639155]">Initial Budget</p>
+                <p class="text-sm font-medium text-[#4CAF50]">Initial Budget</p>
                 <p id="totalBudget" class="text-base font-bold text-[#121a0f]">KSh 0.00</p>
               </div>
               <div class="text-center md:text-right">
-                <p class="text-sm font-medium text-[#639155]">Remaining</p>
+                <p class="text-sm font-medium text-[#4CAF50]">Remaining</p>
                 <p id="remainingBudget" class="text-base font-bold text-[#121a0f]">KSh 0.00</p>
               </div>
             </div>
@@ -119,18 +119,18 @@
                 <label class="flex-1 w-full">
                   <p class="text-[#121a0f] text-base sm:text-lg font-bold leading-normal pb-2">Set Your Budget</p>
                   <div class="relative">
-                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[#639155]">KSh</span>
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[#4CAF50]">KSh</span>
                     <input
                       id="budgetInput"
                       type="number"
                       placeholder="Enter your budget"
-                      class="form-input pl-14 w-full rounded-lg border-[#d6e5d2] bg-[#f9fbf9] h-12 sm:h-14 text-[#121a0f] placeholder:text-[#639155] focus:border-[#53d22c] focus:ring focus:ring-[#53d22c] focus:ring-opacity-20 transition-all"
+                      class="form-input pl-14 w-full rounded-lg border-[#F5F5F5] bg-[#FAFAFA] h-12 sm:h-14 text-[#121a0f] placeholder:text-[#4CAF50] focus:border-[#4CAF50] focus:ring focus:ring-[#4CAF50] focus:ring-opacity-20 transition-all"
                     />
                   </div>
                 </label>
                 <button
                   onclick="setBudget()"
-                  class="button-hover w-full sm:w-auto h-12 sm:h-14 px-6 bg-[#53d22c] text-white rounded-lg font-bold transition-all hover:shadow-lg"
+                  class="button-hover w-full sm:w-auto h-12 sm:h-14 px-6 bg-[#FF9800] text-white rounded-lg font-bold transition-all hover:shadow-lg"
                 >
                   Set Budget
                 </button>
@@ -147,26 +147,26 @@
               </div>
 
               <!-- Add Item Form -->
-              <div class="border-t border-[#ebf2e9] pt-4 sm:pt-6">
+              <div class="border-t border-[#F5F5F5] pt-4 sm:pt-6">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   <label class="flex-1">
                     <p class="text-[#121a0f] font-medium leading-normal pb-2">Item Name</p>
                     <input
                       id="itemName"
                       placeholder="Enter item name"
-                      class="form-input w-full rounded-lg border-[#d6e5d2] bg-[#f9fbf9] h-12 text-[#121a0f] placeholder:text-[#639155] focus:border-[#53d22c] focus:ring focus:ring-[#53d22c] focus:ring-opacity-20 transition-all"
+                      class="form-input w-full rounded-lg border-[#F5F5F5] bg-[#FAFAFA] h-12 text-[#121a0f] placeholder:text-[#4CAF50] focus:border-[#4CAF50] focus:ring focus:ring-[#4CAF50] focus:ring-opacity-20 transition-all"
                     />
                   </label>
                   <label class="flex-1">
                     <p class="text-[#121a0f] font-medium leading-normal pb-2">Price</p>
                     <div class="relative">
-                      <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[#639155]">KSh</span>
+                      <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[#4CAF50]">KSh</span>
                       <input
                         id="itemPrice"
                         type="number"
                         step="0.01"
                         placeholder="0.00"
-                        class="form-input pl-14 w-full rounded-lg border-[#d6e5d2] bg-[#f9fbf9] h-12 text-[#121a0f] placeholder:text-[#639155] focus:border-[#53d22c] focus:ring focus:ring-[#53d22c] focus:ring-opacity-20 transition-all"
+                        class="form-input pl-14 w-full rounded-lg border-[#F5F5F5] bg-[#FAFAFA] h-12 text-[#121a0f] placeholder:text-[#4CAF50] focus:border-[#4CAF50] focus:ring focus:ring-[#4CAF50] focus:ring-opacity-20 transition-all"
                       />
                     </div>
                   </label>
@@ -174,13 +174,13 @@
                 <div class="flex flex-col sm:flex-row justify-between gap-3 sm:gap-4">
                   <button
                     onclick="clearList()"
-                    class="button-hover order-2 sm:order-1 h-12 px-6 bg-[#ebf2e9] text-[#121a0f] rounded-lg font-bold transition-all w-full sm:w-auto"
+                    class="button-hover order-2 sm:order-1 h-12 px-6 bg-[#BDBDBD] text-white rounded-lg font-bold transition-all w-full sm:w-auto"
                   >
                     Clear All
                   </button>
                   <button
                     onclick="addItem()"
-                    class="button-hover order-1 sm:order-2 h-12 px-6 bg-[#53d22c] text-white rounded-lg font-bold transition-all hover:shadow-lg w-full sm:w-auto"
+                    class="button-hover order-1 sm:order-2 h-12 px-6 bg-[#FF9800] text-white rounded-lg font-bold transition-all hover:shadow-lg w-full sm:w-auto"
                   >
                     Add Item
                   </button>
@@ -189,19 +189,6 @@
             </div>
           </div>
         </main>
-
-        <!-- Remove or hide the footer budget status on mobile since we now have it at the top -->
-        <footer class="hidden md:block sticky bottom-0 backdrop-blur-md bg-white/80 border-t border-[#ebf2e9] shadow-[0_-1px_2px_rgba(0,0,0,0.05)]">
-          <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between py-4">
-              <div>
-                <p class="text-[#121a0f] font-medium">Budget Status</p>
-                <p id="totalBudgetFooter" class="text-[#639155]">Initial Budget: KSh 0.00</p>
-              </div>
-              <p id="remainingBudgetFooter" class="text-xl font-bold">Remaining: KSh 0.00</p>
-            </div>
-          </div>
-        </footer>
       </div>
     </div>
 
@@ -215,9 +202,9 @@
         updateBudgetDisplay();
         
         // Add success feedback
-        budgetInput.classList.add('border-[#53d22c]');
+        budgetInput.classList.add('border-[#4CAF50]');
         setTimeout(() => {
-          budgetInput.classList.remove('border-[#53d22c]');
+          budgetInput.classList.remove('border-[#4CAF50]');
         }, 1000);
       }
 
@@ -225,31 +212,19 @@
         const totalSpent = items.reduce((sum, item) => sum + item.price, 0);
         const remaining = budget - totalSpent;
         
-        // Update both header and footer budget displays
+        // Update header budget displays
         document.getElementById('totalBudget').textContent = `KSh ${budget.toFixed(2)}`;
         document.getElementById('remainingBudget').textContent = `KSh ${remaining.toFixed(2)}`;
         
-        // Update footer displays (visible on desktop)
-        document.getElementById('totalBudgetFooter').textContent = `Initial Budget: KSh ${budget.toFixed(2)}`;
-        document.getElementById('remainingBudgetFooter').textContent = `Remaining: KSh ${remaining.toFixed(2)}`;
-        
         // Add color indication for remaining budget
-        const remainingElements = [
-          document.getElementById('remainingBudget'),
-          document.getElementById('remainingBudgetFooter')
-        ];
-        
-        remainingElements.forEach(element => {
-          if (element) {
-            if (remaining < 0) {
-              element.classList.remove('text-[#121a0f]');
-              element.classList.add('text-red-500');
-            } else {
-              element.classList.remove('text-red-500');
-              element.classList.add('text-[#121a0f]');
-            }
-          }
-        });
+        const remainingElement = document.getElementById('remainingBudget');
+        if (remaining < 0) {
+          remainingElement.classList.remove('text-[#121a0f]');
+          remainingElement.classList.add('text-[#F44336]');
+        } else {
+          remainingElement.classList.remove('text-[#F44336]');
+          remainingElement.classList.add('text-[#121a0f]');
+        }
       }
 
       function addItem() {
@@ -265,21 +240,21 @@
           updateBudgetDisplay();
           
           // Clear inputs with animation
-          nameInput.classList.add('border-[#53d22c]');
-          priceInput.classList.add('border-[#53d22c]');
+          nameInput.classList.add('border-[#4CAF50]');
+          priceInput.classList.add('border-[#4CAF50]');
           setTimeout(() => {
-            nameInput.classList.remove('border-[#53d22c]');
-            priceInput.classList.remove('border-[#53d22c]');
+            nameInput.classList.remove('border-[#4CAF50]');
+            priceInput.classList.remove('border-[#4CAF50]');
             nameInput.value = '';
             priceInput.value = '';
           }, 1000);
         } else {
           // Error feedback
-          if (!name) nameInput.classList.add('border-red-500');
-          if (!price || price <= 0) priceInput.classList.add('border-red-500');
+          if (!name) nameInput.classList.add('border-[#F44336]');
+          if (!price || price <= 0) priceInput.classList.add('border-[#F44336]');
           setTimeout(() => {
-            nameInput.classList.remove('border-red-500');
-            priceInput.classList.remove('border-red-500');
+            nameInput.classList.remove('border-[#F44336]');
+            priceInput.classList.remove('border-[#F44336]');
           }, 1000);
         }
       }
@@ -300,7 +275,7 @@
         
         if (items.length === 0) {
           container.innerHTML = `
-            <div class="text-center py-6 sm:py-8 text-[#639155] text-sm sm:text-base">
+            <div class="text-center py-6 sm:py-8 text-[#4CAF50] text-sm sm:text-base">
               Your shopping list is empty. Add some items!
             </div>
           `;
@@ -309,16 +284,16 @@
         
         items.forEach((item, index) => {
           const itemElement = document.createElement('div');
-          itemElement.className = 'item-container flex items-center gap-3 sm:gap-4 bg-[#f9fbf9] px-4 sm:px-6 py-3 sm:py-4 rounded-lg transition-all hover-card';
+          itemElement.className = 'item-container flex items-center gap-3 sm:gap-4 bg-[#FAFAFA] px-4 sm:px-6 py-3 sm:py-4 rounded-lg transition-all hover-card';
           itemElement.setAttribute('data-index', index);
           itemElement.innerHTML = `
             <div class="flex-1 min-w-0">
               <p class="text-[#121a0f] font-medium leading-normal truncate">${item.name}</p>
-              <p class="text-[#639155] text-sm sm:text-base">KSh ${item.price.toFixed(2)}</p>
+              <p class="text-[#4CAF50] text-sm sm:text-base">KSh ${item.price.toFixed(2)}</p>
             </div>
             <button
               onclick="removeItem(${index})"
-              class="remove-button flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-[#ebf2e9] text-[#121a0f] hover:bg-red-100 hover:text-red-500 transition-all active:scale-95"
+              class="remove-button flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-[#F5F5F5] text-[#121a0f] hover:bg-[#F44336] hover:text-white transition-all active:scale-95"
             >
               ×
             </button>
