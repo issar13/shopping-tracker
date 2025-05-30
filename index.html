@@ -9,305 +9,187 @@
       href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
     />
 
-    <title>Shopping Budget Tracker</title>
+    <title>Smart Shopping Tracker - Never Forget Items Again</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
-      /* Smooth transitions */
-      .transition-all {
-        transition: all 0.3s ease-in-out;
-      }
-      
-      /* Card hover effect */
-      @media (hover: hover) {
-        .hover-card:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-      }
-      
-      /* Input focus effects */
-      .input-focus:focus {
-        box-shadow: 0 0 0 3px rgba(83, 210, 44, 0.2);
-      }
-      
-      /* Button hover effects */
-      @media (hover: hover) {
-        .button-hover:hover {
-          transform: translateY(-1px);
-          filter: brightness(1.1);
-        }
-      }
-      
-      /* Remove button hover effect */
-      .remove-button {
-        opacity: 1;
-      }
-      
-      @media (hover: hover) {
-        .remove-button {
-          opacity: 0;
-        }
-        
-        .item-container:hover .remove-button {
-          opacity: 1;
-        }
-      }
-
-      /* Gradient background */
       .gradient-bg {
         background: linear-gradient(135deg, #f9fbf9 0%, #f0f5f0 100%);
       }
-
-      /* Mobile optimizations */
-      @media (max-width: 640px) {
-        .mobile-full {
-          width: 100% !important;
-          padding-left: 1rem !important;
-          padding-right: 1rem !important;
-        }
-        
-        .mobile-stack {
-          flex-direction: column !important;
-          gap: 1rem !important;
-        }
-        
-        .mobile-p {
-          padding: 1rem !important;
-        }
+      
+      .hero-gradient {
+        background: linear-gradient(160deg, #53d22c 0%, #2ea614 100%);
+      }
+      
+      .feature-card {
+        transition: all 0.3s ease-in-out;
+      }
+      
+      .feature-card:hover {
+        transform: translateY(-4px);
+      }
+      
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+      }
+      
+      .float-animation {
+        animation: float 6s ease-in-out infinite;
       }
     </style>
   </head>
-  <body class="gradient-bg">
-    <div class="relative flex size-full min-h-screen flex-col overflow-x-hidden font-['Manrope']">
-      <div class="layout-container flex h-full grow flex-col">
-        <header class="sticky top-0 z-10 backdrop-blur-md bg-white/80 border-b border-solid border-b-[#ebf2e9] px-4 sm:px-6 lg:px-10 py-4 shadow-sm">
-          <div class="max-w-5xl mx-auto flex items-center justify-between">
-            <div class="flex items-center gap-3 sm:gap-4 text-[#121a0f]">
-              <div class="size-5 sm:size-6 text-[#53d22c]">
-                <svg viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+  <body class="gradient-bg font-['Manrope']">
+    <header class="sticky top-0 z-10 backdrop-blur-md bg-white/80 border-b border-[#ebf2e9] shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center gap-3">
+            <div class="size-6 text-[#53d22c]">
+              <svg viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+              </svg>
+            </div>
+            <span class="text-xl font-bold text-[#121a0f]">Smart Shopping</span>
+          </div>
+          <a
+            href="app.html"
+            class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#53d22c] hover:bg-[#47b526] transition-colors"
+          >
+            Open App
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <div class="hero-gradient text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 class="text-4xl sm:text-5xl font-bold leading-tight mb-6">
+                Never Leave Items Behind in Your Shopping Cart Again
+              </h1>
+              <p class="text-lg sm:text-xl mb-8 text-[#f0f5f0]">
+                Stay organized, track your budget, and shop smarter with our intuitive shopping list tracker. Perfect for busy shoppers who want to manage their expenses effectively.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="app.html"
+                  class="inline-flex items-center justify-center px-6 py-3 border-2 border-white text-base font-medium rounded-lg text-white hover:bg-white hover:text-[#53d22c] transition-colors"
+                >
+                  Start Tracking Now
+                </a>
+                <a
+                  href="#features"
+                  class="inline-flex items-center justify-center px-6 py-3 border-2 border-transparent text-base font-medium rounded-lg bg-white text-[#53d22c] hover:bg-[#f0f5f0] transition-colors"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+            <div class="hidden lg:block">
+              <div class="float-animation">
+                <svg class="w-full max-w-lg mx-auto" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="100" cy="100" r="80" fill="white" fill-opacity="0.1"/>
+                  <path d="M65 80L90 105L135 60" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="100" cy="100" r="40" stroke="white" stroke-width="8"/>
                 </svg>
               </div>
-              <h2 class="text-[#121a0f] text-lg sm:text-xl font-bold leading-tight tracking-[-0.015em]">Shopping Budget Tracker</h2>
             </div>
           </div>
-        </header>
-
-        <main class="px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
-          <div class="max-w-5xl mx-auto">
-            <!-- Budget Input Section -->
-            <div class="bg-white rounded-xl shadow-sm p-4 sm:p-6 mb-4 sm:mb-8 transition-all hover:shadow-md">
-              <div class="flex flex-col sm:flex-row items-start sm:items-end gap-4">
-                <label class="flex-1 w-full">
-                  <p class="text-[#121a0f] text-base sm:text-lg font-bold leading-normal pb-2">Set Your Budget</p>
-                  <div class="relative">
-                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[#639155]">KSh</span>
-                    <input
-                      id="budgetInput"
-                      type="number"
-                      placeholder="Enter your budget"
-                      class="form-input pl-14 w-full rounded-lg border-[#d6e5d2] bg-[#f9fbf9] h-12 sm:h-14 text-[#121a0f] placeholder:text-[#639155] focus:border-[#53d22c] focus:ring focus:ring-[#53d22c] focus:ring-opacity-20 transition-all"
-                    />
-                  </div>
-                </label>
-                <button
-                  onclick="setBudget()"
-                  class="button-hover w-full sm:w-auto h-12 sm:h-14 px-6 bg-[#53d22c] text-white rounded-lg font-bold transition-all hover:shadow-lg"
-                >
-                  Set Budget
-                </button>
-              </div>
-            </div>
-
-            <!-- Shopping List Section -->
-            <div class="bg-white rounded-xl shadow-sm p-4 sm:p-6 mb-4 sm:mb-8">
-              <h2 class="text-[#121a0f] text-xl sm:text-2xl font-bold leading-tight tracking-[-0.015em] mb-4 sm:mb-6">My Shopping List</h2>
-              
-              <!-- Shopping List Container -->
-              <div id="shoppingList" class="space-y-3 mb-4 sm:mb-6">
-                <!-- Items will be added here dynamically -->
-              </div>
-
-              <!-- Add Item Form -->
-              <div class="border-t border-[#ebf2e9] pt-4 sm:pt-6">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                  <label class="flex-1">
-                    <p class="text-[#121a0f] font-medium leading-normal pb-2">Item Name</p>
-                    <input
-                      id="itemName"
-                      placeholder="Enter item name"
-                      class="form-input w-full rounded-lg border-[#d6e5d2] bg-[#f9fbf9] h-12 text-[#121a0f] placeholder:text-[#639155] focus:border-[#53d22c] focus:ring focus:ring-[#53d22c] focus:ring-opacity-20 transition-all"
-                    />
-                  </label>
-                  <label class="flex-1">
-                    <p class="text-[#121a0f] font-medium leading-normal pb-2">Price</p>
-                    <div class="relative">
-                      <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[#639155]">KSh</span>
-                      <input
-                        id="itemPrice"
-                        type="number"
-                        step="0.01"
-                        placeholder="0.00"
-                        class="form-input pl-14 w-full rounded-lg border-[#d6e5d2] bg-[#f9fbf9] h-12 text-[#121a0f] placeholder:text-[#639155] focus:border-[#53d22c] focus:ring focus:ring-[#53d22c] focus:ring-opacity-20 transition-all"
-                      />
-                    </div>
-                  </label>
-                </div>
-                <div class="flex flex-col sm:flex-row justify-between gap-3 sm:gap-4">
-                  <button
-                    onclick="clearList()"
-                    class="button-hover order-2 sm:order-1 h-12 px-6 bg-[#ebf2e9] text-[#121a0f] rounded-lg font-bold transition-all w-full sm:w-auto"
-                  >
-                    Clear All
-                  </button>
-                  <button
-                    onclick="addItem()"
-                    class="button-hover order-1 sm:order-2 h-12 px-6 bg-[#53d22c] text-white rounded-lg font-bold transition-all hover:shadow-lg w-full sm:w-auto"
-                  >
-                    Add Item
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
-
-        <footer class="sticky bottom-0 backdrop-blur-md bg-white/80 border-t border-[#ebf2e9] shadow-[0_-1px_2px_rgba(0,0,0,0.05)]">
-          <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between py-3 sm:py-4 gap-2 sm:gap-4">
-              <div>
-                <p class="text-[#121a0f] text-sm sm:text-base font-medium">Budget Status</p>
-                <p id="totalBudget" class="text-[#639155] text-sm sm:text-base">Initial Budget: KSh 0.00</p>
-              </div>
-              <p id="remainingBudget" class="text-lg sm:text-xl font-bold">Remaining: KSh 0.00</p>
-            </div>
-          </div>
-        </footer>
+        </div>
       </div>
-    </div>
 
-    <script>
-      let budget = 0;
-      let items = [];
+      <!-- Features Section -->
+      <div id="features" class="py-16 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl font-bold text-[#121a0f] mb-4">
+              Why Choose Our Shopping Tracker?
+            </h2>
+            <p class="text-lg text-[#639155] max-w-2xl mx-auto">
+              Designed to make your shopping experience more organized, efficient, and budget-friendly.
+            </p>
+          </div>
 
-      function setBudget() {
-        const budgetInput = document.getElementById('budgetInput');
-        budget = parseFloat(budgetInput.value) || 0;
-        updateBudgetDisplay();
-        
-        // Add success feedback
-        budgetInput.classList.add('border-[#53d22c]');
-        setTimeout(() => {
-          budgetInput.classList.remove('border-[#53d22c]');
-        }, 1000);
-      }
-
-      function updateBudgetDisplay() {
-        const totalSpent = items.reduce((sum, item) => sum + item.price, 0);
-        const remaining = budget - totalSpent;
-        
-        document.getElementById('totalBudget').textContent = `Initial Budget: KSh ${budget.toFixed(2)}`;
-        document.getElementById('remainingBudget').textContent = `Remaining: KSh ${remaining.toFixed(2)}`;
-        
-        const remainingElement = document.getElementById('remainingBudget');
-        if (remaining < 0) {
-          remainingElement.classList.remove('text-[#121a0f]');
-          remainingElement.classList.add('text-red-500');
-        } else {
-          remainingElement.classList.remove('text-red-500');
-          remainingElement.classList.add('text-[#121a0f]');
-        }
-      }
-
-      function addItem() {
-        const nameInput = document.getElementById('itemName');
-        const priceInput = document.getElementById('itemPrice');
-        
-        const name = nameInput.value.trim();
-        const price = parseFloat(priceInput.value) || 0;
-        
-        if (name && price > 0) {
-          items.push({ name, price });
-          renderItems();
-          updateBudgetDisplay();
-          
-          // Clear inputs with animation
-          nameInput.classList.add('border-[#53d22c]');
-          priceInput.classList.add('border-[#53d22c]');
-          setTimeout(() => {
-            nameInput.classList.remove('border-[#53d22c]');
-            priceInput.classList.remove('border-[#53d22c]');
-            nameInput.value = '';
-            priceInput.value = '';
-          }, 1000);
-        } else {
-          // Error feedback
-          if (!name) nameInput.classList.add('border-red-500');
-          if (!price || price <= 0) priceInput.classList.add('border-red-500');
-          setTimeout(() => {
-            nameInput.classList.remove('border-red-500');
-            priceInput.classList.remove('border-red-500');
-          }, 1000);
-        }
-      }
-
-      function removeItem(index) {
-        const itemElement = document.querySelector(`[data-index="${index}"]`);
-        itemElement.classList.add('scale-95', 'opacity-0');
-        setTimeout(() => {
-          items.splice(index, 1);
-          renderItems();
-          updateBudgetDisplay();
-        }, 200);
-      }
-
-      function renderItems() {
-        const container = document.getElementById('shoppingList');
-        container.innerHTML = '';
-        
-        if (items.length === 0) {
-          container.innerHTML = `
-            <div class="text-center py-6 sm:py-8 text-[#639155] text-sm sm:text-base">
-              Your shopping list is empty. Add some items!
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div class="feature-card bg-white rounded-xl p-6 shadow-sm hover:shadow-md">
+              <div class="size-12 bg-[#ebf2e9] rounded-lg flex items-center justify-center mb-4">
+                <svg class="size-6 text-[#53d22c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-[#121a0f] mb-2">Real-time Budget Tracking</h3>
+              <p class="text-[#639155]">
+                Keep track of your spending in real-time. Never exceed your budget with our smart tracking system.
+              </p>
             </div>
-          `;
-          return;
-        }
-        
-        items.forEach((item, index) => {
-          const itemElement = document.createElement('div');
-          itemElement.className = 'item-container flex items-center gap-3 sm:gap-4 bg-[#f9fbf9] px-4 sm:px-6 py-3 sm:py-4 rounded-lg transition-all hover-card';
-          itemElement.setAttribute('data-index', index);
-          itemElement.innerHTML = `
-            <div class="flex-1 min-w-0">
-              <p class="text-[#121a0f] font-medium leading-normal truncate">${item.name}</p>
-              <p class="text-[#639155] text-sm sm:text-base">KSh ${item.price.toFixed(2)}</p>
-            </div>
-            <button
-              onclick="removeItem(${index})"
-              class="remove-button flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-[#ebf2e9] text-[#121a0f] hover:bg-red-100 hover:text-red-500 transition-all active:scale-95"
-            >
-              ×
-            </button>
-          `;
-          container.appendChild(itemElement);
-        });
-      }
 
-      function clearList() {
-        if (items.length === 0) return;
-        
-        const container = document.getElementById('shoppingList');
-        container.classList.add('opacity-0');
-        setTimeout(() => {
-          items = [];
-          renderItems();
-          updateBudgetDisplay();
-          container.classList.remove('opacity-0');
-        }, 200);
-      }
-    </script>
+            <!-- Feature 2 -->
+            <div class="feature-card bg-white rounded-xl p-6 shadow-sm hover:shadow-md">
+              <div class="size-12 bg-[#ebf2e9] rounded-lg flex items-center justify-center mb-4">
+                <svg class="size-6 text-[#53d22c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-[#121a0f] mb-2">Smart Shopping Lists</h3>
+              <p class="text-[#639155]">
+                Create and manage your shopping lists with ease. Add, remove, and check off items as you shop.
+              </p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-card bg-white rounded-xl p-6 shadow-sm hover:shadow-md">
+              <div class="size-12 bg-[#ebf2e9] rounded-lg flex items-center justify-center mb-4">
+                <svg class="size-6 text-[#53d22c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-[#121a0f] mb-2">Local Currency Support</h3>
+              <p class="text-[#639155]">
+                Track your expenses in Kenyan Shillings (KSh). Perfect for local shopping needs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="bg-[#53d22c] py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-8">
+            Ready to Shop Smarter?
+          </h2>
+          <a
+            href="app.html"
+            class="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-lg font-medium rounded-lg text-white hover:bg-white hover:text-[#53d22c] transition-colors"
+          >
+            Start Using Smart Shopping Tracker
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-white border-t border-[#ebf2e9]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="size-5 text-[#53d22c]">
+              <svg viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-[#121a0f]">Smart Shopping Tracker</span>
+          </div>
+          <p class="text-sm text-[#639155]">
+            © 2024 Smart Shopping Tracker. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
   </body>
-</html>
+</html> 
