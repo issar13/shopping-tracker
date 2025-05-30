@@ -82,7 +82,7 @@
   <body class="gradient-bg">
     <div class="relative flex size-full min-h-screen flex-col overflow-x-hidden font-['Manrope']">
       <div class="layout-container flex h-full grow flex-col">
-        <header class="sticky top-0 z-10 backdrop-blur-md bg-white/80 border-b border-solid border-b-[#ebf2e9] px-4 sm:px-6 lg:px-10 py-4 shadow-sm">
+        <header class="sticky top-0 z-20 backdrop-blur-md bg-white/80 border-b border-solid border-b-[#ebf2e9] px-4 sm:px-6 lg:px-10 py-4 shadow-sm">
           <div class="max-w-5xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-3 sm:gap-4 text-[#121a0f]">
               <div class="size-5 sm:size-6 text-[#53d22c]">
@@ -94,6 +94,22 @@
             </div>
           </div>
         </header>
+
+        <!-- Budget Status Bar - Always visible on mobile -->
+        <div class="sticky top-[72px] z-10 bg-white border-b border-[#ebf2e9] shadow-sm md:relative md:top-0 md:border-none md:shadow-none">
+          <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:flex md:flex-wrap items-center gap-3 py-3">
+              <div class="text-center md:text-left md:flex-1">
+                <p class="text-sm font-medium text-[#639155]">Initial Budget</p>
+                <p id="totalBudget" class="text-base font-bold text-[#121a0f]">KSh 0.00</p>
+              </div>
+              <div class="text-center md:text-right">
+                <p class="text-sm font-medium text-[#639155]">Remaining</p>
+                <p id="remainingBudget" class="text-base font-bold text-[#121a0f]">KSh 0.00</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <main class="px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
           <div class="max-w-5xl mx-auto">
@@ -174,14 +190,15 @@
           </div>
         </main>
 
-        <footer class="sticky bottom-0 backdrop-blur-md bg-white/80 border-t border-[#ebf2e9] shadow-[0_-1px_2px_rgba(0,0,0,0.05)]">
+        <!-- Remove or hide the footer budget status on mobile since we now have it at the top -->
+        <footer class="hidden md:block sticky bottom-0 backdrop-blur-md bg-white/80 border-t border-[#ebf2e9] shadow-[0_-1px_2px_rgba(0,0,0,0.05)]">
           <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between py-3 sm:py-4 gap-2 sm:gap-4">
+            <div class="flex items-center justify-between py-4">
               <div>
-                <p class="text-[#121a0f] text-sm sm:text-base font-medium">Budget Status</p>
-                <p id="totalBudget" class="text-[#639155] text-sm sm:text-base">Initial Budget: KSh 0.00</p>
+                <p class="text-[#121a0f] font-medium">Budget Status</p>
+                <p id="totalBudgetFooter" class="text-[#639155]">Initial Budget: KSh 0.00</p>
               </div>
-              <p id="remainingBudget" class="text-lg sm:text-xl font-bold">Remaining: KSh 0.00</p>
+              <p id="remainingBudgetFooter" class="text-xl font-bold">Remaining: KSh 0.00</p>
             </div>
           </div>
         </footer>
@@ -208,17 +225,31 @@
         const totalSpent = items.reduce((sum, item) => sum + item.price, 0);
         const remaining = budget - totalSpent;
         
-        document.getElementById('totalBudget').textContent = `Initial Budget: KSh ${budget.toFixed(2)}`;
-        document.getElementById('remainingBudget').textContent = `Remaining: KSh ${remaining.toFixed(2)}`;
+        // Update both header and footer budget displays
+        document.getElementById('totalBudget').textContent = `KSh ${budget.toFixed(2)}`;
+        document.getElementById('remainingBudget').textContent = `KSh ${remaining.toFixed(2)}`;
         
-        const remainingElement = document.getElementById('remainingBudget');
-        if (remaining < 0) {
-          remainingElement.classList.remove('text-[#121a0f]');
-          remainingElement.classList.add('text-red-500');
-        } else {
-          remainingElement.classList.remove('text-red-500');
-          remainingElement.classList.add('text-[#121a0f]');
-        }
+        // Update footer displays (visible on desktop)
+        document.getElementById('totalBudgetFooter').textContent = `Initial Budget: KSh ${budget.toFixed(2)}`;
+        document.getElementById('remainingBudgetFooter').textContent = `Remaining: KSh ${remaining.toFixed(2)}`;
+        
+        // Add color indication for remaining budget
+        const remainingElements = [
+          document.getElementById('remainingBudget'),
+          document.getElementById('remainingBudgetFooter')
+        ];
+        
+        remainingElements.forEach(element => {
+          if (element) {
+            if (remaining < 0) {
+              element.classList.remove('text-[#121a0f]');
+              element.classList.add('text-red-500');
+            } else {
+              element.classList.remove('text-red-500');
+              element.classList.add('text-[#121a0f]');
+            }
+          }
+        });
       }
 
       function addItem() {
